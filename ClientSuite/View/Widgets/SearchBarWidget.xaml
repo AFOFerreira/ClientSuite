@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="ClientSuite.View.Widgets.SearchBarWidget"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Root">
+
+    <Frame
+        Padding="0"
+        BackgroundColor="White"
+        BorderColor="#E2E8F0"
+        CornerRadius="12"
+        HasShadow="True">
+
+        <Grid Padding="12,0" ColumnDefinitions="Auto,*">
+      
+            <Label
+                Grid.Column="0"
+                Margin="0,0,8,0"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Text="🔍"
+                VerticalOptions="Center" />
+
+            <Entry
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                Completed="OnSearchCompleted"
+                FontSize="14"
+                Placeholder="{Binding Source={x:Reference Root}, Path=Placeholder}"
+                PlaceholderColor="#A0AEC0"
+                ReturnType="Search"
+                Text="{Binding Source={x:Reference Root}, Path=Text, Mode=TwoWay}"
+                TextColor="#2D3748"
+                VerticalOptions="Center" />
+        </Grid>
+    </Frame>
+
+</ContentView>

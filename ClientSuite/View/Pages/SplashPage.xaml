@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ClientSuite.View.Pages.SplashPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False">
+
+    <Image
+        x:Name="Logo"
+        Grid.Row="1"
+        Aspect="AspectFit"
+        HeightRequest="300"
+        HorizontalOptions="Center"
+        Opacity="0"
+        Scale=".82"
+        Source="logo.png"
+        VerticalOptions="Center"
+        WidthRequest="300" />
+
+</ContentPage>

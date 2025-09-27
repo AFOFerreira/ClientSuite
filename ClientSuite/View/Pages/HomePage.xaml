@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ClientSuite.View.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ClientSuite.ViewModel.Pages"
+    xmlns:widgets="clr-namespace:ClientSuite.View.Widgets"
+    x:Name="HomeView"
+    Title="Clientes"
+    BackgroundColor="#FAFBFF"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <Grid Padding="16" RowDefinitions="Auto,Auto,Auto,*">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label
+                Grid.Column="0"
+                FontAttributes="Bold"
+                FontFamily="Serif"
+                FontSize="28"
+                Text="Clientes"
+                TextColor="#1A365D"
+                VerticalOptions="Center" />
+
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#4299E1"
+                Command="{Binding NewCommand}"
+                CornerRadius="12"
+                FontAttributes="Bold"
+                FontSize="14"
+                HeightRequest="40"
+                Text="＋ Novo Cliente"
+                TextColor="White"
+                WidthRequest="140">
+                <Button.Shadow>
+                    <Shadow
+                        Brush="#4299E1"
+                        Opacity="0.3"
+                        Radius="8"
+                        Offset="0,4" />
+                </Button.Shadow>
+            </Button>
+        </Grid>
+
+        <Label
+            Grid.Row="1"
+            Margin="0,4,0,0"
+            FontAttributes="Italic"
+            FontSize="14"
+            Text="{Binding Items.Count, StringFormat='Total: {0} clientes'}"
+            TextColor="#4A5568" />
+
+
+        <widgets:SearchBarWidget
+            Grid.Row="2"
+            Margin="0,4,0,0"
+            SearchCommand="{Binding RefreshCommand}"
+            Text="{Binding Query}" />
+
+        <RefreshView
+            Grid.Row="3"
+            Margin="0,20,0,0"
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsLoadingData}">
+
+            <CollectionView ItemsSource="{Binding Items}" SelectionMode="None">
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout
+                        Padding="24"
+                        HorizontalOptions="Center"
+                        Spacing="16"
+                        VerticalOptions="Center">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="#EDF2F7"
+                            CornerRadius="70"
+                            HasShadow="False"
+                            HeightRequest="140"
+                            HorizontalOptions="Center"
+                            WidthRequest="140">
+                            <Label
+                                FontSize="60"
+                                HorizontalOptions="Center"
+                                Text="👥"
+                                VerticalOptions="Center" />
+                        </Frame>
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Text="Nenhum cliente encontrado"
+                            TextColor="#2D3748" />
+                        <Label
+                            FontSize="14"
+                            HorizontalTextAlignment="Center"
+                            Text="Clique em 'Novo Cliente' para adicionar o primeiro."
+                            TextColor="#718096" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="0,0,0,12"
+                            Padding="0"
+                            BackgroundColor="White"
+                            BorderColor="#E2E8F0"
+                            CornerRadius="16"
+                            HasShadow="True">
+
+                            <Grid Padding="16" ColumnDefinitions="Auto,*,Auto">
+
+                                <Frame
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="#4299E1"
+                                    CornerRadius="12"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    WidthRequest="50">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Initials}"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </Frame>
+
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Margin="12,0"
+                                    Spacing="6">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding FullName}"
+                                        TextColor="#2D3748" />
+                                    <Label
+                                        FontSize="14"
+                                        Text="{Binding Age, StringFormat='Idade: {0} anos'}"
+                                        TextColor="#4A5568" />
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label
+                                            FontAttributes="Italic"
+                                            FontSize="13"
+                                            Text="{Binding SafeCity}"
+                                            TextColor="#718096" />
+                                        <Label
+                                            FontSize="13"
+                                            Text="•"
+                                            TextColor="#718096" />
+                                        <Label
+                                            FontAttributes="Italic"
+                                            FontSize="13"
+                                            Text="{Binding SafeState}"
+                                            TextColor="#718096" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+
+                                <HorizontalStackLayout
+                                    Grid.Column="2"
+                                    Spacing="8"
+                                    VerticalOptions="Center">
+
+                                    <Button
+                                        BackgroundColor="Transparent"
+                                        BorderColor="#4299E1"
+                                        BorderWidth="1"
+                                        Command="{Binding Source={x:Reference HomeView}, Path=BindingContext.EditClientCommand}"
+                                        CommandParameter="{Binding .}"
+                                        CornerRadius="8"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HeightRequest="36"
+                                        Text="Editar"
+                                        TextColor="#4299E1"
+                                        WidthRequest="70" />
+
+                                    <Button
+                                        BackgroundColor="Transparent"
+                                        BorderColor="#E53E3E"
+                                        BorderWidth="1"
+                                        Command="{Binding Source={x:Reference HomeView}, Path=BindingContext.RemoveClientCommand}"
+                                        CommandParameter="{Binding .}"
+                                        CornerRadius="8"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HeightRequest="36"
+                                        Text="Excluir"
+                                        TextColor="#E53E3E"
+                                        WidthRequest="70" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

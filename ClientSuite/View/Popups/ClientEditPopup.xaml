@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="ClientSuite.View.Popups.ClientEditPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Padding="20"
+    Background="Transparent"
+    BackgroundColor="Transparent"
+    CanBeDismissedByTappingOutsideOfPopup="True"
+    IsClippedToBounds="True">
+
+    <Grid>
+        <Border
+            Padding="0"
+            BackgroundColor="White"
+            HorizontalOptions="Center"
+            Stroke="Transparent"
+            StrokeShape="RoundRectangle 24"
+            VerticalOptions="Center"
+            WidthRequest="640">
+            <Border.Shadow>
+                <Shadow
+                    Brush="#000000"
+                    Opacity="0.25"
+                    Radius="40"
+                    Offset="0,20" />
+            </Border.Shadow>
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+
+                <Border
+                    Grid.Row="0"
+                    BackgroundColor="#4299E1"
+                    StrokeShape="RoundRectangle 24,24,0,0"
+                    StrokeThickness="0">
+                    <Grid Padding="24,20" ColumnDefinitions="*,Auto">
+                        <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="{Binding Title}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Button
+                            Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Clicked="OnCancel"
+                            CornerRadius="20"
+                            FontSize="18"
+                            HeightRequest="40"
+                            Text="×"
+                            TextColor="White"
+                            WidthRequest="40" />
+                    </Grid>
+                </Border>
+
+
+                <ScrollView Grid.Row="1" Padding="24,20">
+                    <VerticalStackLayout Spacing="16">
+
+
+                        <VerticalStackLayout Spacing="12">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="Informações Pessoais"
+                                TextColor="#2D3748" />
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                                <Border
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Stroke" Value="#E2E8F0" />
+                                            <Setter Property="StrokeThickness" Value="1" />
+                                            <Style.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding NameHasError}"
+                                                    TargetType="Border"
+                                                    Value="True">
+                                                    <Setter Property="Stroke" Value="#E53E3E" />
+                                                    <Setter Property="StrokeThickness" Value="2" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Entry
+                                        Margin="12,0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        Placeholder="Nome *"
+                                        PlaceholderColor="#A0AEC0"
+                                        Text="{Binding Name}"
+                                        TextColor="#2D3748"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="1"
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Stroke" Value="#E2E8F0" />
+                                            <Setter Property="StrokeThickness" Value="1" />
+                                            <Style.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding LastNameHasError}"
+                                                    TargetType="Border"
+                                                    Value="True">
+                                                    <Setter Property="Stroke" Value="#E53E3E" />
+                                                    <Setter Property="StrokeThickness" Value="2" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Entry
+                                        Margin="12,0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        Placeholder="Sobrenome *"
+                                        PlaceholderColor="#A0AEC0"
+                                        Text="{Binding LastName}"
+                                        TextColor="#2D3748"
+                                        VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+
+                            <Border
+                                BackgroundColor="#F7FAFC"
+                                Stroke="#E2E8F0"
+                                StrokeShape="RoundRectangle 10"
+                                StrokeThickness=".5">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Stroke" Value="#E2E8F0" />
+                                        <Setter Property="StrokeThickness" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AgeHasError}"
+                                                TargetType="Border"
+                                                Value="True">
+                                                <Setter Property="Stroke" Value="#E53E3E" />
+                                                <Setter Property="StrokeThickness" Value="2" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Entry
+                                    Margin="12,0"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="45"
+                                    Keyboard="Numeric"
+                                    Placeholder="Idade *"
+                                    PlaceholderColor="#A0AEC0"
+                                    Text="{Binding AgeText}"
+                                    TextColor="#2D3748"
+                                    VerticalOptions="Center" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <BoxView
+                            Margin="0,8"
+                            BackgroundColor="#E2E8F0"
+                            HeightRequest="1" />
+
+
+                        <VerticalStackLayout Spacing="12">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="Endereço"
+                                TextColor="#2D3748" />
+
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border
+                                        Grid.Column="0"
+                                        BackgroundColor="#F7FAFC"
+                                        Stroke="#E2E8F0"
+                                        StrokeShape="RoundRectangle 10"
+                                        StrokeThickness=".5">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Stroke" Value="#E2E8F0" />
+                                                <Setter Property="StrokeThickness" Value="1" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding ZipCodeHasError}"
+                                                        TargetType="Border"
+                                                        Value="True">
+                                                        <Setter Property="Stroke" Value="#E53E3E" />
+                                                        <Setter Property="StrokeThickness" Value="2" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Entry
+                                            Margin="12,0"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="45"
+                                            Keyboard="Numeric"
+                                            Placeholder="CEP *"
+                                            PlaceholderColor="#A0AEC0"
+                                            Text="{Binding ZipCodeText}"
+                                            TextColor="#2D3748"
+                                            VerticalOptions="Center">
+
+                                            <Entry.Behaviors>
+                                                <toolkit:EventToCommandBehavior Command="{Binding CepLookupCommand}" EventName="Completed" />
+                                            </Entry.Behaviors>
+                                        </Entry>
+                                    </Border>
+
+                                    <Button
+                                        Grid.Column="1"
+                                        Margin="8,0,0,0"
+                                        BackgroundColor="#4299E1"
+                                        Command="{Binding CepLookupCommand}"
+                                        CornerRadius="10"
+                                        HeightRequest="45"
+                                        Text="Buscar"
+                                        TextColor="White" />
+                                </Grid>
+
+                                <Border
+                                    Grid.Column="1"
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Entry
+                                        Margin="12,0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        Placeholder="País"
+                                        PlaceholderColor="#A0AEC0"
+                                        Text="{Binding Country}"
+                                        TextColor="#2D3748"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                            </Grid>
+
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                                <Border
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Picker
+                                        Title="Estado (UF)"
+                                        Margin="6,0"
+                                        ItemDisplayBinding="{Binding Nome}"
+                                        ItemsSource="{Binding Ufs}"
+                                        SelectedItem="{Binding SelectedUf}">
+                                        <Picker.Behaviors>
+
+                                            <toolkit:EventToCommandBehavior Command="{Binding LoadUfsCommand}" EventName="Focused" />
+                                        </Picker.Behaviors>
+                                    </Picker>
+                                </Border>
+
+
+                                <Border
+                                    Grid.Column="1"
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Picker
+                                        Title="Município"
+                                        Margin="6,0"
+                                        ItemDisplayBinding="{Binding Nome}"
+                                        ItemsSource="{Binding Municipios}"
+                                        SelectedItem="{Binding SelectedMunicipio}" />
+                                </Border>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                                <Border
+                                    Grid.Column="0"
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Stroke" Value="#E2E8F0" />
+                                            <Setter Property="StrokeThickness" Value="1" />
+                                            <Style.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding NumberHasError}"
+                                                    TargetType="Border"
+                                                    Value="True">
+                                                    <Setter Property="Stroke" Value="#E53E3E" />
+                                                    <Setter Property="StrokeThickness" Value="2" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Entry
+                                        Margin="12,0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        Keyboard="Numeric"
+                                        Placeholder="Número *"
+                                        PlaceholderColor="#A0AEC0"
+                                        Text="{Binding NumberText}"
+                                        TextColor="#2D3748"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Border
+                                    Grid.Column="1"
+                                    BackgroundColor="#F7FAFC"
+                                    Stroke="#E2E8F0"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness=".5">
+                                    <Entry
+                                        Margin="12,0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        Placeholder="Complemento"
+                                        PlaceholderColor="#A0AEC0"
+                                        Text="{Binding Complement}"
+                                        TextColor="#2D3748"
+                                        VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!--  Footer  -->
+                <Border
+                    Grid.Row="2"
+                    BackgroundColor="#F8FAFC"
+                    StrokeShape="RoundRectangle 0,0,24,24"
+                    StrokeThickness="0">
+                    <Grid
+                        Padding="24,16"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+                        <Button
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            BorderColor="#CBD5E0"
+                            BorderWidth="1"
+                            Clicked="OnCancel"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HeightRequest="45"
+                            Text="Cancelar"
+                            TextColor="#718096" />
+                        <Button
+                            Grid.Column="1"
+                            BackgroundColor="#4299E1"
+                            Clicked="OnSave"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HeightRequest="45"
+                            Text="Salvar"
+                            TextColor="White">
+                            <Button.Shadow>
+                                <Shadow
+                                    Brush="#4299E1"
+                                    Opacity="0.3"
+                                    Radius="8"
+                                    Offset="0,3" />
+                            </Button.Shadow>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</toolkit:Popup>
