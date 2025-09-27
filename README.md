@@ -2,7 +2,7 @@
 
 Aplicativo de exemplo para gerenciamento de clientes com .NET MAUI.
 
-Este README inclui um **tour visual** das telas principais (capturas abaixo) e instruções rápidas para rodar o projeto.
+Este README inclui um **tour visual** das telas principais (capturas abaixo).
 
 ## Recursos
 - Listagem de clientes com busca.
