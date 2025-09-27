@@ -29,18 +29,5 @@ Este README inclui um **tour visual** das telas principais (capturas abaixo).
 **Confirmação de exclusão**  
 ![Confirmação de exclusão](./screenshots/screen_05.png)
 
-## Estrutura (sugerida)
-```
-/ (root do repositório)
-├─ README.md
-└─ screenshots/
-   ├─ screen_01.png
-   ├─ screen_02.png
-   ├─ screen_03.png
-   ├─ screen_04.png
-   ├─ screen_05.png
-   └─ screen_06.png
-```
-
 ## Licença
 Este projeto pode ser utilizado livremente para estudos e como base de referência. Ajuste a licença conforme sua necessidade.
