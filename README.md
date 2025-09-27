@@ -14,23 +14,20 @@ Este README inclui um **tour visual** das telas principais (capturas abaixo) e i
 
 ## Capturas de tela
 
-**Lista vazia (variação 1)**  
+**Lista vazia**  
 ![Lista vazia (variação 1)](./screenshots/screen_01.png)
 
-**Lista vazia (variação 2)**  
+**Modal **Novo Cliente****  
 ![Lista vazia (variação 2)](./screenshots/screen_02.png)
 
-**Modal **Novo Cliente****  
+**Lista com 1 cliente**  
 ![Modal **Novo Cliente**](./screenshots/screen_03.png)
 
-**Lista com 1 cliente**  
-![Lista com 1 cliente](./screenshots/screen_04.png)
-
 **Modal **Editar Cliente****  
-![Modal **Editar Cliente**](./screenshots/screen_05.png)
+![Modal **Editar Cliente**](./screenshots/screen_04.png)
 
 **Confirmação de exclusão**  
-![Confirmação de exclusão](./screenshots/screen_06.png)
+![Confirmação de exclusão](./screenshots/screen_05.png)
 
 ## Estrutura (sugerida)
 ```
