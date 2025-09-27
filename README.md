@@ -30,4 +30,4 @@ Este README inclui um **tour visual** das telas principais (capturas abaixo).
 ![Confirmação de exclusão](./screenshots/screen_05.png)
 
 ## Licença
-Este projeto pode ser utilizado livremente para estudos e como base de referência. Ajuste a licença conforme sua necessidade.
+Este projeto pode ser utilizado livremente para estudos e como base de referência.
